@@ -1,4 +1,3 @@
-// tests/reservationController.test.ts
 import request from 'supertest';
 import app from '../src/app'
 import { Server } from 'http'
@@ -38,12 +37,10 @@ describe('POST /reservations', () => {
       .post('/reservations')
       .send({ homeId: 1, startDate, endDate });
 
-    // Then, try to create an overlapping reservation for the same home
+    // Try to create an overlapping reservation for the same home
     const res = await request(app)
       .post('/reservations')
       .send({ homeId: 1, startDate, endDate });
-
-    // Assuming your API responds with 400 or another appropriate status for conflicts
     expect(res.statusCode).toEqual(400);
   });
 
@@ -52,23 +49,21 @@ describe('POST /reservations', () => {
     const res = await request(app)
       .post('/reservations')
       .send({
-        homeId: 999, // Assuming this ID does not exist
+        homeId: 999, 
         startDate: new Date(),
         endDate: new Date(new Date().setDate(new Date().getDate() + 1)),
       });
     expect(res.statusCode).toEqual(404);
   });
 
-  // Test for reservation with an invalid date range
+  // Test for reservation with an invalid date range (end date before start date)
   it('should reject a reservation with an invalid date range', async () => {
     const startDate = new Date();
-    const endDate = new Date(new Date().setDate(new Date().getDate() - 1)); // End date before start date
+    const endDate = new Date(new Date().setDate(new Date().getDate() - 1)); 
 
     const res = await request(app)
       .post('/reservations')
       .send({ homeId: 1, startDate, endDate });
-
-    // Assuming your API responds with 400 for invalid input
     expect(res.statusCode).toEqual(400);
   });
 });

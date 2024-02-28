@@ -1,4 +1,3 @@
-// src/controllers/reservationController.ts
 import { Request, Response } from 'express';
 import { homes, reservations } from '../data';
 import { Reservation } from '../models/Reservation';
