@@ -35,6 +35,10 @@ This Vacation Home Rental API allows users to reserve vacation homes for specifi
 6. Future Plan:
     If I were to continue with this project, I would start by creating a front end UI so that a user could more easily interact with this project.
 
+Video Walkthrough:
+
+https://www.loom.com/share/e8fbf84a30784e8ea791ed1f19dcdc34
+
 
 
     ## API Endpoints
@@ -54,8 +58,6 @@ The API provides the following endpoints to manage reservations for vacation hom
   - `400 Bad Request`: Invalid request data (e.g., overlapping dates, invalid date range).
   - `404 Not Found`: Requested home does not exist.
 
-
--in progress-
 
 
 
